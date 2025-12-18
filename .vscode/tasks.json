@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Local Sync a htdocs",
+      "type": "shell",
+      "command": "rsync -av --delete /Users/markcode/DevTraining/php_moderno_project/ /Applications/XAMPP/xamppfiles/htdocs/php_moderno",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+
