@@ -16,6 +16,10 @@ $sale->addConcept($concept);
 $sale->addConcept($concept2);
 echo $sale->getTotal();
 
+$sale->setDate("2025-12-18");
+echo $sale->getDate();
+
+
 
 
 //print_r($sale->concepts);
@@ -23,7 +27,7 @@ echo $sale->getTotal();
 
 class Sale {
     protected float $total;
-    public string $date;
+    private string $date;
     private array $concepts;
     public static $count;
 
@@ -41,6 +45,17 @@ class Sale {
 
     public function getTotal() : float {
         return $this->total;
+    }
+
+    public function getDate(): string {
+        return "<br/>".$this->date;
+    }
+
+    public function setDate(string $date) {
+        if(strlen($date) > 10){
+            echo "<br/> La fecha es incorrecta.";
+        }
+        $this->date = $date;
     }
 
     public static function reset() {
