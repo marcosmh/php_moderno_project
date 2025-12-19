@@ -1,48 +1,70 @@
 <?php
+declare(strict_types = 1);
 
-//$sale = new Sale();
-//$sale->total = 10.4;
-//$sale->date = date("Y-m-d");
+$sale = new Sale(10.4, date("Y-m-dd"));
+$onlineSale = new OnlineSale(16, date("Y-m-dd"),"Tarjeta");
 
-$sale = new Sale(10.4, date("Y-m-d"));
-$sale = new Sale(10.4, date("Y-m-d"));
+//$concept = new Concept("Cerveza",10);
+//$sale->addConcept($concept);
+echo $onlineSale->createInvoice();
+echo $onlineSale->showInfo();
 
-
-echo Sale::$count."<br/>";
-Sale::reset();
-$sale = new Sale(10.4, date("Y-m-d"));
-echo Sale::$count." ";
-
-//$sale->createInvoice();
-
-echo "<br/>";
-echo gettype($sale);
-echo "<br/>";
-print_r($sale);
-
-
+//print_r($sale->concepts);
+//echo gettype($sale->total);
+//echo $sale->createInvoice();
 
 class Sale {
-    public $total;
-    public $date;
+    public float $total;
+    public string $date;
+    public array $concepts;
     public static $count;
 
-    public function __construct($total, $date) {
+    public function __construct(float $total, string $date) {
         $this->total = $total;
-        $this->$date = $date;
+        $this->date = $date;
+        $this->concepts = [];
         self::$count++;
+    }
+
+    
+    public function addConcept(Concept $concept) {
+        $this->concepts[] = $concept;
     }
 
     public static function reset() {
         self::$count = 0;
     }
 
+    public function createInvoice(): string {
+        return "<br/>Se crea la factura";
+    }
+
     public function __destruct()
     {
         //echo "<br/>Se ha eliminado el objeto";
     }
+}
 
-    public function createInvoice() {
-        echo "<br/>Se crea la fatura";
+class OnlineSale extends Sale {
+    public string $paymentMethod;
+
+     public function __construct(float $total, string $date, string $paymentMethod) {
+       parent::__construct($total, $date);
+       $this->paymentMethod = $paymentMethod;
+    }
+
+    public function showInfo(): string {
+        return "<br/>La venta tiene un monto de $this->total";
+    }
+
+}
+
+class Concept {
+    public string $description;
+    public float|int $amount;
+
+    public function __construct(string $description, float|int $amount) {
+        $this->description = $description;
+        $this->amount = $amount;
     }
 }
