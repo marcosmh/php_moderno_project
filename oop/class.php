@@ -1,34 +1,46 @@
 <?php
 declare(strict_types = 1);
 
-$sale = new Sale(10.4, date("Y-m-dd"));
-$onlineSale = new OnlineSale(16, date("Y-m-dd"),"Tarjeta");
+$sale = new Sale(date("Y-m-dd"));
+$onlineSale = new OnlineSale( date("Y-m-dd"),"Tarjeta");
 
 //$concept = new Concept("Cerveza",10);
 //$sale->addConcept($concept);
-echo $onlineSale->createInvoice();
-echo $onlineSale->showInfo();
+
+//echo $onlineSale->createInvoice();
+//echo $onlineSale->showInfo();
+
+$concept = new Concept("Cerveza", 10.2);
+$concept2 = new Concept("Cerveza 2", 20.23);
+$sale->addConcept($concept);
+$sale->addConcept($concept2);
+echo $sale->getTotal();
+
+
 
 //print_r($sale->concepts);
-//echo gettype($sale->total);
 //echo $sale->createInvoice();
 
 class Sale {
-    public float $total;
+    protected float $total;
     public string $date;
-    public array $concepts;
+    private array $concepts;
     public static $count;
 
-    public function __construct(float $total, string $date) {
-        $this->total = $total;
+    public function __construct(string $date) {
         $this->date = $date;
+        $this->total = 0;
         $this->concepts = [];
         self::$count++;
     }
 
-    
     public function addConcept(Concept $concept) {
         $this->concepts[] = $concept;
+        $this->total += $concept->amount;
+    }
+
+    public function getTotal() : float {
+        return $this->total;
     }
 
     public static function reset() {
@@ -48,8 +60,8 @@ class Sale {
 class OnlineSale extends Sale {
     public string $paymentMethod;
 
-     public function __construct(float $total, string $date, string $paymentMethod) {
-       parent::__construct($total, $date);
+     public function __construct(string $date, string $paymentMethod) {
+       parent::__construct( $date);
        $this->paymentMethod = $paymentMethod;
     }
 
