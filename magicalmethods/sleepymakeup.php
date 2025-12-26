@@ -15,10 +15,12 @@ class Animal {
         echo "se deserializa el obejto <br>";
         $this->age = 0;
         $this->some();
+
     }
 
     private function some() {
         echo "el color es ".$this->color."<br>";
+        
     }
 
 }
