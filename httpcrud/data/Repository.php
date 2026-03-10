@@ -6,7 +6,7 @@ use app\interfaces\RepositoryInterface;
 
 class Repository implements RepositoryInterface {
 
-   private string $fileData;
+   private string $fileData;    
    private array $db;
 
    public function __construct()
@@ -21,14 +21,13 @@ class Repository implements RepositoryInterface {
 
         if(count($this->db) == 0) {
             $data['id'] = 1;
-
         } else {
             $lastElement = $this->db[count($this->db) - 1];
             $data['id'] = ((int) $lastElement['id']  + 1);
         }
 
         $this->db[] = $data;
-        file_get_contents($this->fileData, json_encode($this->db));
+        file_put_contents($this->fileData, json_encode($this->db));
 
     }
 
@@ -44,8 +43,6 @@ class Repository implements RepositoryInterface {
             }
 
         }
-        
-
     }
     public function delete(int $id) {
 

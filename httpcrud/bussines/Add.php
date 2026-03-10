@@ -11,7 +11,7 @@ class Add {
     private RepositoryInterface $repository;
     private ValidatorInterface $validator;
 
-    public function __construct(RepositoryInterface $repository, ValidatorInterface $validator) 
+    public function __construct(RepositoryInterface $repository, ValidatorInterface $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
