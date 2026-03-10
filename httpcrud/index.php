@@ -16,19 +16,20 @@ $repository = new Repository();
 $validator = new Validator();
 
 try {
-
+    
     switch($_SERVER['REQUEST_METHOD']) {
         case 'POST':
-            $body = json_encode(file_get_contents('php://input'),true);
+            $body = json_decode(file_get_contents('php://input'),true);
             $add = new Add($repository, $validator);
             $add->add($body);
             break;
         case 'PUT':
-            $body = json_encode(file_get_contents('php://input'),true);
+            $body = json_decode(file_get_contents('php://input'),true);
             $update = new Update($repository, $validator);
             $update->update($body);
             break;
         case 'DELETE':
+            echo "hacer delete";
             $id = $_GET['id'];
             $delete = new Delete($repository);
             $delete->delete($id);
@@ -50,4 +51,7 @@ try {
 } catch(\Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
+} catch(TypeError $te) {
+    http_response_code(400);
+    echo "Se capturo un TypError: ". $te->getMessage();
 }

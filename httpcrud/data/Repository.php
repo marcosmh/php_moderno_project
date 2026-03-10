@@ -18,7 +18,7 @@ class Repository implements RepositoryInterface {
 
    
     public function create($data) {
-
+        
         if(count($this->db) == 0) {
             $data['id'] = 1;
         } else {
@@ -38,19 +38,19 @@ class Repository implements RepositoryInterface {
     public function update($data) {
         foreach($this->db as $key => $item) {
             if($item['id'] == $data['id']) {
-                $this->db['key'] = $data;
-                file_get_contents($this->fileData, json_encode($this->db));
+                $this->db[$key] = $data;
+                file_put_contents($this->fileData, json_encode($this->db));
             }
 
         }
     }
     public function delete(int $id) {
-
+        
         foreach($this->db as $key => $item) {
             if($item['id'] == $id) {
                 unset($this->db[$key]);
                 $this->db = array_values($this->db);
-                file_get_contents($this->fileData, json_encode($this->db));
+                file_put_contents($this->fileData, json_encode($this->db));
             }
         }
     }
