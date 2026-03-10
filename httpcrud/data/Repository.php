@@ -35,6 +35,7 @@ class Repository implements RepositoryInterface {
     public function get(): array {
         return $this->db;
     }
+    
     public function update($data) {
         foreach($this->db as $key => $item) {
             if($item['id'] == $data['id']) {

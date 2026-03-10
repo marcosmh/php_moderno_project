@@ -20,18 +20,18 @@ try {
     switch($_SERVER['REQUEST_METHOD']) {
         case 'POST':
             $body = json_encode(file_get_contents('php://input'),true);
-            $add = $repository->Add($repository, $validator);
+            $add = new Add($repository, $validator);
             $add->add($body);
             break;
         case 'PUT':
             $body = json_encode(file_get_contents('php://input'),true);
-            $update = $repository->Update($repository, $validator);
+            $update = new Update($repository, $validator);
             $update->update($body);
             break;
         case 'DELETE':
             $id = $_GET['id'];
             $delete = new Delete($repository);
-            $delete->delete($repository);
+            $delete->delete($id);
             break;
         case 'GET':
             $get = new Get($repository);

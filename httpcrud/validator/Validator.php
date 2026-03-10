@@ -2,9 +2,9 @@
 
 namespace app\validators;
 
-use app\interaces\ValidatorsInterface;
+use app\interfaces\ValidatorInterface;
 
-class Validator implements ValidatorsInterface {
+class Validator implements ValidatorInterface {
     
     private string $error;
     
