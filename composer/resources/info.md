@@ -1,8 +1,13 @@
+## Composer
 
-$ composer init
+### Iniciar Proyecto Composer
+* $ composer init
 
-$ composer require nesbot/carbon
+### Instalar Lib Carbon
+* $ composer require nesbot/carbon
 
-$ composer remove nesbot/carbon
+### Eliminar Lib Carbon
+* $ composer remove nesbot/carbon
 
-$ composer require phpoffice/phpspreadsheet
+### Instalar Lib para Excel
+* $ composer require phpoffice/phpspreadsheet
