@@ -1,0 +1,26 @@
+{
+    "name": "markcode/test",
+    "description": "Pruebas para composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Markcode\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcos Magaña",
+            "email": "imarcosmagana@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+    "platform": {
+        "php": "8.2.4"
+    }
+},
+    "require": {
+        "nesbot/carbon": "^3.0@dev",
+        "phpoffice/phpspreadsheet": "dev-master"
+    }
+}
