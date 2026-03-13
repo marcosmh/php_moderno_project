@@ -1,11 +1,18 @@
 {
-    "name": "markcode/test",
-    "description": "Pruebas para composer",
+    "name": "markcode/excel",
+    "description": "Proyecto Excel",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Markcode\\Test\\": "src/"
-        }
+            "Markcode\\Excel\\": "src/",
+            "app\\interfaces\\": "src/interfaces/",
+            "app\\data\\": "src/data/",
+            "app\\excel\\": "src/excel/",
+            "app\\bussines\\": "src/bussines/"
+        },
+        "files": [
+            "src/config/database.php"
+        ]
     },
     "authors": [
         {
@@ -20,7 +27,6 @@
       }
     },
     "require": {
-        "nesbot/carbon": "^3.0@dev",
         "phpoffice/phpspreadsheet": "dev-master"
     }
 }
