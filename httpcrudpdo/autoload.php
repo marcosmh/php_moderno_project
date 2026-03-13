@@ -11,6 +11,8 @@ require_once __DIR__ . '/exceptions/DataException.php';
 require_once __DIR__ . '/data/Repository.php';
 require_once __DIR__ . '/database/BaseRepository.php';
 require_once __DIR__ . '/database/RepositoryDB.php';
+require_once __DIR__ . '/session/Session.php';
+
 
 require_once __DIR__ . '/bussines/Get.php';
 require_once __DIR__ . '/bussines/Add.php';
